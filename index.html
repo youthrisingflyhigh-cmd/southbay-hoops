@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Southbay Hoops — 35+ Men's Basketball League | San Jose, CA</title>
+  <meta name="description" content="Southbay Hoops is a competitive 35+ men's recreational basketball league in San Jose, CA. Powered by Youth Rising Fly High." />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- jsPDF for waiver PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-logo">SB<span>HOOPS</span></div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#teams">Teams</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#waiver">Waiver</a></li>
+    <li><a href="#waiver" class="nav-cta">Sign Waiver</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-slash-left"></div>
+  <div class="hero-slash-right"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Season 1 — Now Live</div>
+    <h1>SOUTH<em>BAY</em><br>HOOPS</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">San Jose's Premier 35+ Men's Basketball League &mdash; Competitive. Community. Class.</p>
+    <div>
+      <a href="#schedule" class="btn btn-gold">View Schedule</a>
+      <a href="#waiver" class="btn btn-outline">Sign Waiver</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Teams</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">35+</div>
+        <div class="hero-stat-label">Age Division</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">Week Season</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">501c3</div>
+        <div class="hero-stat-label">Powered by YRFH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash-divider"></div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About the League</div>
+    <h2 class="section-title">Built for the <em>Bay</em></h2>
+    <p class="section-sub">Southbay Hoops is a competitive men's recreational basketball league for players 35 and older, based in San Jose, CA. Organized and operated by Youth Rising Fly High — a 501(c)(3) nonprofit — all proceeds support youth sports programming in the South Bay.</p>
+    <br><br>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.12);">
+      <div style="background:#1a1a1a;padding:2rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#C9A84C;letter-spacing:0.08em;margin-bottom:0.5rem;">📍 Location</div>
+        <div style="color:#ccc;font-size:0.9rem;">San Jose High School<br>San Jose, CA</div>
+      </div>
+      <div style="background:#1a1a1a;padding:2rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#C9A84C;letter-spacing:0.08em;margin-bottom:0.5rem;">📅 Season Dates</div>
+        <div style="color:#ccc;font-size:0.9rem;">July 1 – August 12, 2025<br>Playoffs: Aug 19 & Aug 26</div>
+      </div>
+      <div style="background:#1a1a1a;padding:2rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#C9A84C;letter-spacing:0.08em;margin-bottom:0.5rem;">🏀 Game Times</div>
+        <div style="color:#ccc;font-size:0.9rem;">Tuesdays<br>6:30 PM &amp; 7:30 PM</div>
+      </div>
+      <div style="background:#1a1a1a;padding:2rem;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:#C9A84C;letter-spacing:0.08em;margin-bottom:0.5rem;">🌐 Live Stats</div>
+        <div style="color:#ccc;font-size:0.9rem;"><a href="https://courttrack-tau.vercel.app/player.html" target="_blank" style="color:#C9A84C;">CourtTrack App</a><br>Real-time scores & standings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash-divider"></div>
+
+<!-- ============ TEAMS ============ -->
+<section id="teams" style="background:#111;">
+  <div class="container">
+    <div class="section-label">Season 1 Roster</div>
+    <h2 class="section-title">The <em>Teams</em></h2>
+    <p class="section-sub">Seven teams competing in a full round-robin format. Every team plays every other team once.</p>
+    <div class="teams-grid">
+      <div class="team-card">
+        <div class="team-number">01</div>
+        <div class="team-name">FLEETWORK</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">02</div>
+        <div class="team-name">FLY HIGH</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">03</div>
+        <div class="team-name">UNITED</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">04</div>
+        <div class="team-name">OHANA</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">05</div>
+        <div class="team-name">MONEYBALL</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">06</div>
+        <div class="team-name">SB HOOPS</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+      <div class="team-card">
+        <div class="team-number">07</div>
+        <div class="team-name">TREEZ</div>
+        <div class="team-detail">35+ Division</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash-divider"></div>
+
+<!-- ============ SCHEDULE ============ -->
+<section id="schedule" class="schedule-section">
+  <div class="container">
+    <div class="section-label">Regular Season</div>
+    <h2 class="section-title">2025 <em>Schedule</em></h2>
+    <p class="section-sub">7-week round robin. Top 2 seeds receive first-round byes. Play-In: Aug 19 · Championship Night: Aug 26.</p>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Date</th>
+          <th>6:30 PM</th>
+          <th>7:30 PM</th>
+          <th>Bye</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-gold">1</span></td>
+          <td>Tue, Jul 1</td>
+          <td>FLEETWORK vs UNITED</td>
+          <td>FLY HIGH vs MONEYBALL</td>
+          <td>TREEZ</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">2</span></td>
+          <td>Tue, Jul 8</td>
+          <td>UNITED vs OHANA</td>
+          <td>FLEETWORK vs TREEZ</td>
+          <td>MONEYBALL</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">3</span></td>
+          <td>Tue, Jul 15</td>
+          <td>TREEZ vs MONEYBALL</td>
+          <td>UNITED vs SB HOOPS</td>
+          <td>FLY HIGH</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">4</span></td>
+          <td>Tue, Jul 22</td>
+          <td>SB HOOPS vs OHANA</td>
+          <td>FLEETWORK vs MONEYBALL</td>
+          <td>UNITED</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">5</span></td>
+          <td>Tue, Jul 29</td>
+          <td>TREEZ vs SB HOOPS</td>
+          <td>FLY HIGH vs OHANA</td>
+          <td>FLEETWORK</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">6</span></td>
+          <td>Tue, Aug 5</td>
+          <td>MONEYBALL vs OHANA</td>
+          <td>FLEETWORK vs FLY HIGH</td>
+          <td>SB HOOPS</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">7</span></td>
+          <td>Tue, Aug 12</td>
+          <td>FLY HIGH vs TREEZ</td>
+          <td>SB HOOPS vs MONEYBALL</td>
+          <td>OHANA</td>
+        </tr>
+        <tr class="week-header">
+          <td colspan="5">🏆 PLAYOFFS</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-outline">PO</span></td>
+          <td>Tue, Aug 19</td>
+          <td colspan="2">Play-In Game — #3 Seed vs #4 Seed (6:30 PM)</td>
+          <td>#1, #2 Bye</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-outline">SF</span></td>
+          <td>Tue, Aug 26</td>
+          <td>Semifinal (6:30 PM)</td>
+          <td>Championship (7:30 PM)</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="slash-divider"></div>
+
+<!-- ============ RULES ============ -->
+<section id="rules">
+  <div class="container">
+    <div class="section-label">League Rules</div>
+    <h2 class="section-title">Rules &amp; <em>Regulations</em></h2>
+    <p class="section-sub">All players are expected to know and abide by league rules. Refs have final authority on all calls.</p>
+    <div class="rules-grid">
+      <div class="rule-block">
+        <h3>Game Format</h3>
+        <ul>
+          <li>Two 20-minute halves, running clock</li>
+          <li>Clock stops final 2 minutes of 2nd half (within 5 pts)</li>
+          <li>5-minute overtime (sudden death on tied games)</li>
+          <li>Each team gets 2 timeouts per half</li>
+          <li>10 personal fouls allowed before player disqualification</li>
+          <li>Game ball provided — Wilson Evolution</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h3>Eligibility</h3>
+        <ul>
+          <li>Players must be 35 years or older</li>
+          <li>Valid government ID required to verify age</li>
+          <li>Signed liability waiver required before first game</li>
+          <li>Players may only roster on one team per season</li>
+          <li>Minimum 5 players required to start a game</li>
+          <li>Rosters lock after Week 2</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h3>Uniforms &amp; Equipment</h3>
+        <ul>
+          <li>Team jerseys required — no duplicate numbers</li>
+          <li>No jewelry that could be hazardous to other players</li>
+          <li>Basketball shoes required — no casual sneakers</li>
+          <li>Knee braces with exposed metal must be covered</li>
+          <li>Headbands, compression sleeves permitted</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h3>Conduct &amp; Sportsmanship</h3>
+        <ul>
+          <li>Zero tolerance for fighting — immediate season suspension</li>
+          <li>Technical fouls: 1 = warning, 2 = ejection</li>
+          <li>Ejected players must leave the gym immediately</li>
+          <li>Verbal abuse of referees results in immediate ejection</li>
+          <li>League commissioner decisions are final</li>
+          <li>All disputes submitted in writing within 24 hours</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h3>Standings &amp; Playoffs</h3>
+        <ul>
+          <li>Win = 2 pts, Loss = 1 pt, Forfeit = 0 pts</li>
+          <li>Tiebreakers: head-to-head, point differential, points scored</li>
+          <li>Top 4 teams advance to playoffs</li>
+          <li>#1 and #2 seeds receive Play-In byes</li>
+          <li>Playoff seeding finalizes after Week 7</li>
+        </ul>
+      </div>
+      <div class="rule-block">
+        <h3>Forfeits &amp; Scheduling</h3>
+        <ul>
+          <li>Teams must notify by 5 PM day-of to avoid forfeit</li>
+          <li>Forfeit = 0 pts, opponent receives 2 pts</li>
+          <li>Two forfeits in a season may result in disqualification</li>
+          <li>No reschedules after Week 4</li>
+          <li>Makeup games at commissioner's discretion only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="slash-divider"></div>
+
+<!-- ============ WAIVER ============ -->
+<section id="waiver" class="waiver-section">
+  <div class="container">
+    <div class="section-label">Required Before Play</div>
+    <h2 class="section-title">Liability <em>Waiver</em></h2>
+    <p class="section-sub">Every participant must complete this waiver before their first game. Sign below, then download your PDF copy.</p>
+
+    <div class="waiver-box">
+      <!-- Waiver text -->
+      <div class="waiver-text">
+        <p><strong style="color:#fff;">PARTICIPANT LIABILITY WAIVER, RELEASE OF LIABILITY, AND ASSUMPTION OF RISK</strong></p>
+        <p style="color:#888;font-size:0.8rem;">Southbay Hoops / Youth Rising Fly High — San Jose, CA</p>
+
+        <h4>1. ASSUMPTION OF RISK</h4>
+        <p>I understand and acknowledge that participation in basketball and related athletic activities involves inherent risks of injury, including but not limited to sprains, strains, fractures, concussions, dental injuries, eye injuries, and other serious bodily harm, including permanent disability or death. I am aware of these risks and voluntarily choose to participate in Southbay Hoops leagues, clinics, open gyms, and events organized by Youth Rising Fly High (YRFH), a California 501(c)(3) nonprofit corporation.</p>
+
+        <h4>2. RELEASE OF LIABILITY</h4>
+        <p>In consideration of being permitted to participate, I, on behalf of myself, my heirs, executors, administrators, legal representatives, and assigns, hereby release, discharge, covenant not to sue, and hold harmless Youth Rising Fly High, Southbay Hoops, their officers, directors, employees, volunteers, agents, and representatives (collectively "Releasees") from any and all claims, demands, losses, damages, costs, expenses, attorneys' fees, and causes of action of every kind and nature, whether known or unknown, arising out of or related to my participation, including claims arising from the negligence of the Releasees.</p>
+
+        <h4>3. INDEMNIFICATION</h4>
+        <p>I agree to indemnify and hold harmless the Releasees from any loss, liability, damage, or costs they may incur as a result of my participation, including claims made by third parties arising from my conduct during league activities.</p>
+
+        <h4>4. MEDICAL AUTHORIZATION</h4>
+        <p>In the event of injury or medical emergency, I authorize YRFH staff and volunteers to seek and consent to emergency medical treatment on my behalf. I understand that I am solely responsible for all costs of medical treatment. I confirm that I am physically capable of participating in strenuous athletic activities and that I have no known medical conditions that would prevent safe participation without physician clearance.</p>
+
+        <h4>5. CODE OF CONDUCT</h4>
+        <p>I agree to abide by all rules and regulations of Southbay Hoops and to conduct myself in a respectful, sportsmanlike manner at all times. I understand that unsportsmanlike conduct, fighting, threatening behavior, or verbal abuse directed at officials, players, staff, or spectators may result in my immediate ejection from the current game and/or suspension or permanent removal from the league without refund.</p>
+
+        <h4>6. PHOTO & MEDIA RELEASE</h4>
+        <p>I grant Youth Rising Fly High and Southbay Hoops the irrevocable right and permission to photograph, film, and record my participation, and to use such media for promotional, educational, website, and social media purposes without compensation to me.</p>
+
+        <h4>7. WAIVER OF CALIFORNIA CIVIL CODE § 1542</h4>
+        <p>I expressly waive the benefits of California Civil Code Section 1542, which provides: "A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release, and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party."</p>
+
+        <h4>8. GOVERNING LAW & SEVERABILITY</h4>
+        <p>This agreement shall be construed and governed by the laws of the State of California. If any provision is held unenforceable, the remaining provisions shall remain in full force and effect. This document represents the entire agreement between the parties with respect to the subject matter herein.</p>
+
+        <p style="color:#C9A84C;font-size:0.82rem;margin-top:1.2rem;">By signing below, I confirm that I have read, fully understand, and voluntarily agree to all terms of this waiver.</p>
+      </div>
+
+      <!-- Form -->
+      <div class="waiver-form">
+        <div class="form-group">
+          <label for="w-name">Full Name *</label>
+          <input type="text" id="w-name" placeholder="First Last" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="w-dob">Date of Birth *</label>
+          <input type="date" id="w-dob" />
+        </div>
+        <div class="form-group">
+          <label for="w-team">Team *</label>
+          <select id="w-team">
+            <option value="">— Select Team —</option>
+            <option>FLEETWORK</option>
+            <option>FLY HIGH</option>
+            <option>UNITED</option>
+            <option>OHANA</option>
+            <option>MONEYBALL</option>
+            <option>SB HOOPS</option>
+            <option>TREEZ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="w-phone">Phone Number</label>
+          <input type="tel" id="w-phone" placeholder="(408) 000-0000" autocomplete="tel" />
+        </div>
+        <div class="form-group full">
+          <label>Signature *</label>
+          <div class="sig-wrap">
+            <canvas id="signature-canvas"></canvas>
+            <button class="sig-clear" id="sig-clear" type="button">Clear</button>
+            <span class="sig-label">Sign above with mouse or finger</span>
+          </div>
+        </div>
+        <div class="form-group full">
+          <div class="agree-row">
+            <input type="checkbox" id="w-agree" />
+            <label for="w-agree">I have read the waiver in full, I am 35 years of age or older, and I voluntarily agree to all terms.</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="waiver-actions">
+        <button class="btn btn-gold" id="waiver-submit" type="button">Submit &amp; Download PDF</button>
+        <button class="btn btn-outline" id="waiver-download" type="button">Download Blank PDF</button>
+      </div>
+
+      <div id="waiver-success"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-logo">SOUTH<span>BAY</span> HOOPS</div>
+  <div class="footer-sub">Powered by Youth Rising Fly High &mdash; 501(c)(3) Nonprofit &mdash; San Jose, CA</div>
+  <ul class="footer-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#waiver">Waiver</a></li>
+    <li><a href="https://courttrack-tau.vercel.app/player.html" target="_blank">Live Stats</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Youth Rising Fly High. All rights reserved. &nbsp;|&nbsp; www.southbayhoops.org</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

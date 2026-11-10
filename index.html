@@ -348,6 +348,35 @@ footer{
 .div-facts li{font-size:14px;color:var(--light);line-height:1.5;display:flex;gap:10px;}
 .div-facts li span.k{color:var(--muted);min-width:78px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding-top:2px;}
 .div-cta{margin-top:6px;width:100%;}
+
+/* ── HOME: CENTERED HERO ── */
+.hero-section{min-height:auto;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:56px 6% 56px;}
+.hero-bg-text{right:auto;left:50%;top:32%;transform:translate(-50%,-50%);}
+.hero-content{max-width:860px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+.hero-desc{margin-left:auto;margin-right:auto;max-width:560px;}
+.hero-btns{justify-content:center;}
+
+/* ── HERO VIDEO ── */
+.hero-video-wrap{position:relative;z-index:1;width:100%;max-width:960px;margin:48px auto 0;}
+.hero-video{position:relative;width:100%;height:0;padding-top:56.25%;border-radius:18px;overflow:hidden;background:#0d0d0d;border:1px solid rgba(201,168,76,0.35);box-shadow:0 0 0 6px rgba(255,69,0,0.06),0 24px 80px rgba(255,69,0,0.12);}
+.hero-video video,.hero-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;object-fit:cover;background:#000;}
+.hero-video-poster{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:radial-gradient(circle at 50% 40%,rgba(255,69,0,0.16),transparent 62%),#0d0d0d;}
+.hero-video-poster img{height:110px;width:110px;}
+.hero-video-cap{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold2);}
+
+/* ── INSTAGRAM CAROUSEL ── */
+.ig-section{padding:72px 0 88px;text-align:center;}
+.ig-head{padding:0 6%;}
+.ig-head .section-sub{margin:0 auto 24px;}
+.ig-wrap{position:relative;max-width:1240px;margin:32px auto 0;}
+.ig-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 6% 18px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+.ig-track::-webkit-scrollbar{display:none;}
+.ig-card{flex:0 0 min(340px,82vw);scroll-snap-align:center;overflow:hidden;border-radius:12px;}
+.ig-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(10,10,10,0.88);border:1px solid rgba(201,168,76,0.5);color:var(--gold2);font-size:24px;line-height:1;cursor:pointer;z-index:2;}
+.ig-arrow:hover{background:var(--orange);color:#fff;border-color:var(--orange);}
+.ig-prev{left:10px;}
+.ig-next{right:10px;}
+@media(max-width:700px){.hero-video-wrap{margin-top:32px;}.ig-arrow{display:none;}}
 </style>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
@@ -425,6 +454,16 @@ footer{
         <button class="btn-secondary" onclick="showPage('rules')">View League Rules</button>
       </div>
     </div>
+
+    <!-- HERO VIDEO (set HERO_VIDEO in the script at the bottom of this file) -->
+    <div class="hero-video-wrap">
+      <div class="hero-video" id="heroVideo">
+        <div class="hero-video-poster">
+          <img id="heroVideoLogo" alt="Southbay Hoops" />
+          <div class="hero-video-cap">Season Highlights &middot; Coming Soon</div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- STATS ROW -->
@@ -489,8 +528,23 @@ footer{
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-title">Playoffs & Championship</div>
-        <div class="tl-desc">All teams make the playoffs — top seed gets a bye. Semifinals then Championship night — trophies and bragging rights on the line.</div>
+        <div class="tl-desc">Top 6 of 8 teams (or top 4 of 6) make the playoffs — top seed gets a bye. Semifinals then Championship night — trophies and bragging rights on the line.</div>
       </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM CAROUSEL (hidden until IG_POSTS is filled in at the bottom of this file) -->
+  <section class="ig-section" id="igSection">
+    <div class="ig-head">
+      <div class="section-eyebrow">On The Gram</div>
+      <h2 class="section-title">FOLLOW THE ACTION</h2>
+      <p class="section-sub">Game highlights, team shoutouts, and league news.</p>
+      <a id="igFollow" class="btn-secondary" href="#" target="_blank" rel="noopener" style="display:none;text-decoration:none;">Follow &rarr;</a>
+    </div>
+    <div class="ig-wrap">
+      <button class="ig-arrow ig-prev" id="igPrev" aria-label="Previous posts">&lsaquo;</button>
+      <div class="ig-track" id="igTrack"></div>
+      <button class="ig-arrow ig-next" id="igNext" aria-label="Next posts">&rsaquo;</button>
     </div>
   </section>
 
@@ -527,7 +581,7 @@ footer{
           <li><span class="k">Height</span><span>6'2" and under</span></li>
           <li><span class="k">Imports</span><span>2 import rule</span></li>
           <li><span class="k">Grace</span><span>Players who are 39 and turn 40 within 4 months are eligible</span></li>
-          <li><span class="k">When</span><span>Sundays, 10 AM&ndash;2 PM</span></li>
+          <li><span class="k">When</span><span>Tuesdays, 7&ndash;10 PM</span></li>
         </ul>
         <button class="btn-primary div-cta" onclick="showPage('register')">Register a Team</button>
       </div>
@@ -544,11 +598,12 @@ footer{
       </div>
 
       <div class="div-card soon">
-        <div class="div-level">Competitive &middot; Coming January 2027</div>
-        <div class="div-name">Open Division</div>
+        <div class="div-level">Coming January 2027</div>
+        <div class="div-name">Rec Division</div>
         <ul class="div-facts">
+          <li><span class="k">For</span><span>Players looking to develop their skills and experience. Not for college or pro-level players.</span></li>
           <li><span class="k">Starts</span><span>January 2027</span></li>
-          <li><span class="k">When</span><span>Tuesdays, 7&ndash;10 PM</span></li>
+          <li><span class="k">When</span><span>Mondays, 7&ndash;10 PM</span></li>
           <li><span class="k">Details</span><span>Full division details to be announced</span></li>
         </ul>
         <button class="btn-primary div-cta" onclick="showPage('register')">Register a Team</button>
@@ -592,9 +647,9 @@ footer{
               <select class="form-input" id="league-select" onchange="leagueChanged()" required>
                 <option value="">— Choose a league —</option>
                 <option value="35+ Mens League">🏀 35+ Men's League (Wednesdays 7–10 PM)</option>
-                <option value="40+ Mens League">🏀 40+ Men's League (Sundays 10 AM–2 PM)</option>
+                <option value="40+ Mens League">🏀 40+ Men's League (Tuesdays 7–10 PM)</option>
                 <option value="6ft2 Under Division">🏀 6'2" & Under Division (Thursdays 7–10 PM)</option>
-                <option value="Open Division">🏀 Open Division (Tuesdays 7–10 PM, starts January 2027)</option>
+                <option value="Rec Division">🏀 Rec Division (Mondays 7–10 PM, starts January 2027)</option>
               </select>
             </div>
             <div class="form-group full" id="tech-note" style="display:none;">
@@ -748,7 +803,7 @@ footer{
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>35+ Men's League (competitive):</strong> All players must be <strong>35 years of age or older</strong> as of the first game of the season. <strong>Open height</strong> &mdash; there is no height limit. Valid photo ID may be requested at any time. <span class="tag tag-strict">Strictly Enforced</span></div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>40+ Men's League (recreational):</strong> All players must be <strong>40 years of age or older</strong> as of the first game of the season and <strong>6'2" or under</strong>. <strong>2 import rule</strong> applies. Valid photo ID may be requested at any time. <span class="tag tag-strict">Strictly Enforced</span></div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>6'2" &amp; Under Division (competitive):</strong> All players must be <strong>6'2" or under</strong>. <strong>No age restriction.</strong> Players over 6'2" are ineligible regardless of skill level or position. Height verification may be required at check-in. <span class="tag tag-strict">Strictly Enforced</span></div></div>
-          <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Open Division (competitive):</strong> Begins <strong>January 2027</strong> and plays Tuesday nights. Eligibility details will be announced before registration opens.</div></div>
+          <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Rec Division:</strong> For players looking to develop their skills and experience &mdash; not for college or pro-level players. Begins <strong>January 2027</strong> and plays Monday nights. Full eligibility details will be announced before registration opens.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Birthday grace period:</strong> In the <strong>35+ Men's League</strong>, a player who is <strong>34</strong> and turns 35 within <strong>4 months</strong> of the first game of the season is eligible to play. In the <strong>40+ Men's League</strong>, a player who is <strong>39</strong> and turns 40 within <strong>4 months</strong> of the first game of the season is eligible to play. Valid photo ID showing date of birth may be requested.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Residency:</strong> No residency requirement. Players from anywhere may participate as long as they meet age and height requirements.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Ineligible players:</strong> Any team found using an ineligible player will <strong>forfeit that game</strong>. Repeated violations may result in team disqualification.</div></div>
@@ -762,6 +817,7 @@ footer{
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Roster size:</strong> Each team may register a minimum of <strong>5 players</strong> and a maximum of <strong>12 players</strong>.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Roster deadline:</strong> Final rosters must be submitted <strong>48 hours before the first game</strong>. Late additions must be approved by the Commissioner.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Jersey numbers:</strong> All players must have a unique jersey number. Two players on the same team may not wear the same number.</div></div>
+          <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Matching jerseys:</strong> All players on a team must wear matching jerseys by <strong>Game 4</strong>. Teams without matching jerseys by Game 4 will be assessed <strong>technical fouls</strong>, either <strong>before the game</strong> or at <strong>halftime</strong>. <span class="tag tag-warn">Game 4 Deadline</span></div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Roster additions:</strong> Teams may add players to their roster up to <strong>Week 3</strong> of the regular season. No additions after Week 3. <span class="tag tag-warn">Deadline</span></div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Injured reserve (IR):</strong> Players on injured reserve (IR) may be subbed in to the roster at any time during the season, as long as their name was on the team's roster <strong>before the final roster deadline</strong>.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Minimum players to play:</strong> A team must have at least <strong>4 players</strong> present to avoid forfeit. Games may begin with 4 players.</div></div>
@@ -809,7 +865,7 @@ footer{
       <div class="rule-section" id="rule6">
         <div class="rule-section-header"><div class="rule-num">06</div><div class="rule-title">Playoffs & Tiebreakers</div></div>
         <div class="rule-body">
-          <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Playoff format:</strong> The <strong>top seed receives a bye</strong> into the next round. All teams make the playoffs if the division has <strong>7 teams</strong>; divisions with <strong>8 teams</strong> follow a standard bracket with no automatic inclusion.</div></div>
+          <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Playoff format:</strong> In an <strong>8-team division</strong>, the 2 lowest seeds are eliminated and the <strong>top 6 teams</strong> make the playoffs. In a <strong>6-team division</strong>, the 2 lowest seeds are eliminated and the <strong>top 4 teams</strong> make the playoffs. The <strong>top seed receives a bye</strong> into the next round.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Seeding tiebreaker order:</strong> (1) Head-to-head record, (2) Point differential in head-to-head games, (3) Overall point differential (max +/- 20 per game), (4) Points scored, (5) Coin flip.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>Playoff overtime:</strong> <strong>3-minute</strong> overtime periods are played until a winner is determined.</div></div>
           <div class="rule-item"><div class="rule-bullet"></div><div class="rule-text"><strong>All players eligible:</strong> Players must have appeared in at least <strong>2 regular season games</strong> to be eligible for playoff rosters.</div></div>
@@ -888,7 +944,7 @@ footer{
       <div class="timeline">
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Week 1 — Tip Off</div><div class="tl-desc">First games of the season. 3 games, 6:30 PM – 9:30 PM.</div></div>
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Weeks 2–7 — Regular Season</div><div class="tl-desc">Round robin play. Every team plays every other team once. Wednesday nights.</div></div>
-        <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Week 8 — Semifinals</div><div class="tl-desc">Top seed gets a bye. Remaining teams play down; all teams make the playoffs.</div></div>
+        <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Week 8 — Semifinals</div><div class="tl-desc">Top seed gets a bye. Remaining playoff teams play down (top 6 of 8 teams, or top 4 of 6).</div></div>
         <div class="tl-item"><div class="tl-dot"></div><div class="tl-title">Week 9 — Championship Night</div><div class="tl-desc">Championship game + consolation game. Trophies awarded.</div></div>
       </div>
     </div>
@@ -1011,7 +1067,7 @@ var spotsConfig={
   '35+ Mens League': 0,
   '40+ Mens League': 7,
   '6ft2 Under Division': 7,
-  'Open Division': 7
+  'Rec Division': 7
 };
 
 function leagueChanged(){
@@ -1126,6 +1182,71 @@ function submitForm(){
       alert('Something went wrong. Please try again or contact signup@YRFH.org\n\nError: '+err.message);
     });
 }
+</script>
+<script>
+/* ══════════════════════════════════════════════
+   HOME PAGE: VIDEO + INSTAGRAM  (edit this block)
+   ══════════════════════════════════════════════ */
+var HERO_VIDEO = {
+  youtube: 'vLGBFYfzcbk',   // a YouTube video ID, e.g. 'dQw4w9WgXcQ'
+  mp4: '',       // OR a video file uploaded to this repo, e.g. 'highlights.mp4'
+  poster: ''     // optional: an image file shown before the mp4 loads
+};
+var IG_HANDLE = 'southbay.hoops';   // your Instagram username, no @
+var IG_POSTS = [      // paste 5-8 Instagram post or reel links, one per line
+  // 'https://www.instagram.com/p/XXXXXXXXXXX/',
+];
+
+(function(){
+  /* ---- video ---- */
+  var box=document.getElementById('heroVideo');
+  var logo=document.getElementById('heroVideoLogo');
+  var heroLogo=document.querySelector('.hero-content img');
+  if(logo && heroLogo){ logo.src=heroLogo.src; }
+  if(box){
+    var yt=(HERO_VIDEO.youtube||'').trim(), mp4=(HERO_VIDEO.mp4||'').trim();
+    if(yt){
+      box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+encodeURIComponent(yt)+'?rel=0&modestbranding=1&playsinline=1" title="Southbay Hoops highlights" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>';
+    } else if(mp4){
+      var v=document.createElement('video');
+      v.src=mp4; v.controls=true; v.muted=true; v.loop=true; v.autoplay=true; v.playsInline=true;
+      v.setAttribute('playsinline',''); v.preload='metadata';
+      if(HERO_VIDEO.poster){ v.poster=HERO_VIDEO.poster; }
+      box.innerHTML=''; box.appendChild(v);
+    }
+  }
+
+  /* ---- instagram carousel ---- */
+  var sec=document.getElementById('igSection');
+  if(!sec) return;
+  var okUrl=/^https:\/\/(www\.)?instagram\.com\/(p|reel|tv)\/[A-Za-z0-9_-]+\/?/;
+  var posts=(IG_POSTS||[]).filter(function(u){ return okUrl.test((u||'').trim()); });
+  var handle=(IG_HANDLE||'').replace('@','').trim();
+  var follow=document.getElementById('igFollow');
+  if(handle && follow){
+    follow.href='https://www.instagram.com/'+encodeURIComponent(handle)+'/';
+    follow.textContent='Follow @'+handle+' \u2192';
+    follow.style.display='inline-block';
+  }
+  if(!posts.length){
+    if(!handle){ sec.style.display='none'; return; }
+    var w=sec.querySelector('.ig-wrap'); if(w){ w.style.display='none'; }
+    sec.style.paddingBottom='64px';
+    return;
+  }
+  var track=document.getElementById('igTrack');
+  posts.forEach(function(u){
+    var clean=u.trim().split('?')[0]; if(clean.slice(-1)!=='/'){ clean+='/'; }
+    var card=document.createElement('div'); card.className='ig-card';
+    card.innerHTML='<blockquote class="instagram-media" data-instgrm-permalink="'+clean+'?utm_source=ig_embed" data-instgrm-version="14" style="background:#fff;border:0;border-radius:12px;margin:0;max-width:540px;min-width:280px;width:100%;"></blockquote>';
+    track.appendChild(card);
+  });
+  document.getElementById('igPrev').onclick=function(){ track.scrollBy({left:-track.clientWidth*0.8,behavior:'smooth'}); };
+  document.getElementById('igNext').onclick=function(){ track.scrollBy({left:track.clientWidth*0.8,behavior:'smooth'}); };
+  var s=document.createElement('script'); s.async=true; s.src='https://www.instagram.com/embed.js';
+  s.onload=function(){ if(window.instgrm){ window.instgrm.Embeds.process(); } };
+  document.body.appendChild(s);
+})();
 </script>
 </body>
 </html>
